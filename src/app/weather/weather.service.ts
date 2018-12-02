@@ -4,7 +4,6 @@ import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { environment } from '../../environments/environment'
 import { ICurrentWeather, ICurrentWeatherData } from '../interfaces'
-import { IWeatherService } from './weather.service.fake'
 
 @Injectable({
   providedIn: 'root',
@@ -35,4 +34,8 @@ export class WeatherService implements IWeatherService {
   private convertKelvinToFahrenheit(kelvin: number): number {
     return (kelvin * 9) / 5 - 459.67
   }
+}
+
+export interface IWeatherService {
+  getCurrentWeather(city: string, country: string): Observable<ICurrentWeather>
 }
